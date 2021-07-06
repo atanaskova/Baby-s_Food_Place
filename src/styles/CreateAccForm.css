@@ -1,0 +1,57 @@
+body {
+  background: #F8F7F2 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+
+.form-boxess {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
+  float: left;
+  margin-left: 0px;
+  margin-bottom: 50px;
+}
+
+.left-box {
+  float: left;
+  width: 50%;
+}
+
+.right-box {
+  float: left;
+  width: 50%;
+  margin-right: 80px;
+}
+.register {
+  display: block;
+  background: #96BB36 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px;
+  border: none;
+  opacity: 1;
+  width: 202px;
+  height: 40px;
+  font: normal normal bold 15px/5px Roboto Slab;
+  color: #ffff;
+  text-transform: uppercase;
+  margin-top: 25px;
+}
+
+.text-style {
+  display: flex;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 16px/21px var(--unnamed-font-family-roboto-slab);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--orange);
+  font: normal normal bold 16px/21px Roboto Slab;
+  letter-spacing: 0px;
+  color: #F0972A;
+  opacity: 1;
+}
+
+.bgd-style {
+  background: #F0EFEA 0% 0% no-repeat padding-box;
+  width: 294px;
+  height: 40px;
+}
