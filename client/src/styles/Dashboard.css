@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700&display=swap');
+
+container-fluid{
+    background-color: var(--softwhite);
+}
+
+.separator{
+    padding-top: 40px !important;
+    display: flex;
+    align-items: center;
+}
+  
+.separator h2{
+    width: 250px;
+    height: 20px;
+    font-weight:bolder;
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
+    font-size: 20px;
+    color: var(--green);
+}
+  
+.line1{
+    flex: 1;
+    margin-top: 8px;
+    margin-left: -120px;
+    height: 1.5px;
+    background-color: var(--lightgrey);
+}
+
+.line2{
+    flex: 1;
+    margin-top: 8px;
+    margin-left: -30px;
+    height: 1.5px;
+    background-color: var(--lightgrey);
+}
+
+.card{
+    max-height: 300px;
+    max-width: 250px;
+    margin-bottom: 30px;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 13px 40px -5px rgba(150, 187, 54, 1), 0 8px 32px -8px hsla(112, 80%, 32%, 0.9), 0 -6px 32px -6px hsla(33, 87%, 55%, 0.8);
+}
+
+.card-img-top{
+    max-height: 100px;
+}
+
+.card-title{
+    color: var(--orange);
+    font-family: 'Roboto Slab', serif;
+}
+
+.card-text{
+    max-height: 105px;
+    overflow: hidden;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--midgrey);
+}
+
+.F{
+    padding-right: 0 !important;
+    padding-bottom: 15px !important;
+    font-family: 'Roboto Slab', serif;
+}
+
+.badge-pill.pill-a{
+    background-color: var(--green);
+    position:absolute;
+    top:10px;
+    left:10px;
+    z-index: 10;
+    color:var(--softwhite);
+}
+
+.bi-star:hover {
+    transform: scale(1.03);
+    color: var(--orange);
+    cursor: pointer;
+}

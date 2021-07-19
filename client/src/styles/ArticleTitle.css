@@ -1,0 +1,16 @@
+.article-title-h1{
+    font-size: 34px;
+    color: #96BB36;
+    margin: 0;
+}
+.custom-article-line{
+    border-bottom: 2px solid #D8D8D8;
+    margin-bottom: 10px;
+}
+.bi-plus-circle-fill{
+    position: relative;
+    top: 15px;
+    left: -15px;
+    font-size: 41px;
+    color: #F0972A;
+}

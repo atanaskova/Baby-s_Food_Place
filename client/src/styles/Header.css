@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700&display=swap');
+
+.createAccountButton {
+    background: var(--green);
+    box-shadow: 0px 3px 6px var(--darkgrey);
+    border: none;
+    width: 140px;
+    height: 35px;
+    font-size: 12px;
+    font-weight: bolder;
+    padding-top: 10px;
+}
+
+.loginButton{
+    background: var(--softwhite);
+    color: var(--midgrey);
+    box-shadow: 0px 3px 6px var(--darkgrey);
+    border-style: solid;
+    border-color: var(--midgrey);
+    width: 80px;
+    height: 35px;
+    font-size: 12px;
+    font-weight: bolder;
+    padding-top: 10px;
+}
+
+.createAccountButton:hover{
+    background-color: var(--orange);
+}
+
+.loginButton:hover{
+    background-color: var(--midgrey);
+    color: white;
+    border-color: var(--midgrey);
+}
+
+.circle-orange{
+    color: var(--orange);
+    font-size: 20pt;
+    margin-top: -2px;
+}
+
+.mr-2{
+    color: var(--orange);
+    font-weight: bold;
+}
+
+.header{
+    margin-top: 5px;
+    margin-right: 25px;
+}
+
+.nav-header{
+    font-family: sans-serif !important;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 115px !important;
+    padding-right: 80px !important;
+    background-color: var(--softwhite);
+}
+
+.link:hover {
+    transform: scale(1.07);
+}

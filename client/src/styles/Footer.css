@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700&display=swap');
+
+.span-container{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    color: white;
+    font-size: 12px;
+    margin-right: -35px;
+    text-align: right;
+}
+
+.link{
+    font-weight: bolder;
+}
+
+.nav-footer{
+    font-size: small;
+}
+
+.circle-white{
+    color: white;
+    margin-top: -4px;
+    font-size: 20pt;
+}
+
+#footerimg{
+    margin-left: -20px;
+}
