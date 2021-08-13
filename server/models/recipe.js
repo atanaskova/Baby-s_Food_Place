@@ -25,9 +25,16 @@ var recipesSchema=mongoose.Schema({
         type:String,
         required:['Please provide the recipe details']
     },
-    user:{
-        type:mongoose.Types.ObjectId,
-        ref:'User'
+    recipe_picture:{
+        type:String
+    },
+    // user:{
+    //     type:mongoose.Types.ObjectId,
+    //     ref:'User'
+    // },
+    likes:{
+        type:Array,
+        default:[]
     }
 });
 

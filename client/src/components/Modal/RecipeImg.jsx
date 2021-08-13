@@ -1,10 +1,9 @@
 import React from 'react';
 import '../../styles/Modal.css';
-const img = require('../../images/macandbacon.jpg');
 
-const ModalImg=()=>{
+const ModalImg=({img})=>{
     return(
-        <img src={img} alt="Mac&Bacon" className="modalImg"/>
+        <img className="modalImg" src={`${img}`} alt='Recipe'/>
     )
 }
 

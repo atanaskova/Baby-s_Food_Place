@@ -1,17 +1,40 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Table } from 'react-bootstrap';
 import TableRow from './TableRow';
 import '../../styles/MyRecipes.css';
 import ArticleTitle from '../ArticleTitle/ArticleTitle';
+import Header from '../MainPage/Header';
+import Footer from '../MainPage/Footer';
+import { getRecipes } from '../../actions/recipes';
+import Skeleton,{SkeletonTheme} from 'react-loading-skeleton';
 
 const MyRecipes = () => {
+  const dispatch=useDispatch();
+
+  useEffect(()=>{
+    dispatch(getRecipes());
+  },[dispatch]);
+
+  const recipes=useSelector((state)=>state.recipes)
+
   return (
     <div>
-      <ArticleTitle title={"My Recipes"} />
-      
-      <Table className="table-light" responsive style={{marginTop: '40px'}}>
+      <Header />
+
+      <ArticleTitle/>
+
+      {!recipes.length ? (
+        <div className="loading">
+        <SkeletonTheme color="#F5BE14"> 
+          <Skeleton className="skeleton2" count={3}/>
+        </SkeletonTheme>
+        </div>
+      ):(      
+      <Table className="table-light" responsive style={{marginTop: '30px'}}>
         <thead>
-          <tr style={{color:'#F0972A', backgroundColor:'#F8F7F2'}}>
+          <tr className="font-weight-bold main">
             <th>Recipe Name</th>
             <th>Category</th>
             <th>Created On</th>
@@ -21,16 +44,12 @@ const MyRecipes = () => {
           </tr>
         </thead>
         <tbody>
-            <TableRow recipeName={"Homemade Pizza"} category={"brunch"} createdOn={"22.11.2020"}/>
-            <TableRow recipeName={"Sea Spaghetti"} category={"lunch"} createdOn={"13.10.2020"}/>
-            <TableRow recipeName={"Easy Tacos"} category={"dinner"} createdOn={"01.09.2020"}/>
-            <TableRow recipeName={"Mexican Burrito"} category={"breakfast"} createdOn={"11.08.2020"}/>
-            <TableRow recipeName={"Energy Booster"} category={"diner"} createdOn={"07.08.2020"}/>
-            <TableRow recipeName={"Mac & Bacon"} category={"brunch"} createdOn={"02.08.2020"}/>
-            <TableRow recipeName={"Energy Booster"} category={"brunch"} createdOn={"27.07.2020"}/>
+            <TableRow createdOn={"22.11.2020"}/>
         </tbody>
       </Table>
-    </div>
+        )}
+    <Footer />
+  </div>
   );
 };
 

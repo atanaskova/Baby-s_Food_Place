@@ -1,5 +1,6 @@
 const express=require('express');
 const app=express();
+const cors=require('cors');
 const router=require('./routers/user');
 const jwt=require('express-jwt');
 const unauthorizedErrorHandler=require('../../lib/handlers/unauthorized-error-handler');
@@ -22,6 +23,7 @@ app.use(jwt({
         }
     ]
 }));
+app.use(cors());
 app.use((err,req,res,next)=>unauthorizedErrorHandler(err,req,res,next));
 app.use('/api/user', router);
 app.listen(process.env.AUTH_API_PORT, error=>serverStartLogger('User',process.env.AUTH_API_PORT,error));

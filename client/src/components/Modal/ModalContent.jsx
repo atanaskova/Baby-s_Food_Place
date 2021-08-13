@@ -6,14 +6,14 @@ import RecipeDescription from './RecipeDescription';
 import RecipeFooter from './RecipeFooter';
 import RecipeHeader from './RecipeHeader';
 
-const ModalContent=({hideModal})=>{
+const ModalContent=({hideModal,recipe})=>{
     return(
         <div className="modal-bg">
-                <RecipeHeader hideModal={hideModal}/>
-                <RecipeImg/>
-                <RecipeDetails/>
-                <RecipeFooter/>
-                <RecipeDescription/>
+                <RecipeHeader hideModal={hideModal} title={recipe.recipe_title}/>
+                <RecipeImg img={recipe.recipe_picture}/>
+                <RecipeDetails details={recipe.recipe_details}/>
+                <RecipeDescription recipe={recipe}/>
+                <RecipeFooter recipe={recipe}/>
         </div>
     )
 }

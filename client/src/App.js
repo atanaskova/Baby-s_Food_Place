@@ -30,7 +30,7 @@ function App() {
           </Route>
 
           <Route exact path='/'>
-            <Main />
+            <Main/>
           </Route>
 
           <Route path='*'>

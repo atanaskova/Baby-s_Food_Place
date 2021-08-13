@@ -1,24 +1,63 @@
-.custom-spacing-10{
+.table-light{
+    width: 700px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.py-5{
     border-bottom: 5px solid #F8F7F2;
 }
-.color-midgrey{
-    color: #A5A5A5;
+
+.py-3{
+    color:var(--midgrey);
 }
-.custum-font-size-12{
-    font-size: 12px;
+
+.font-weight-bold{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif;
 }
-.custom-btn{
-    width: 50%;
-    background: #96BB36;
+
+.main{
+    color: var(--orange);
+    background-color: var(--softwhite)
+}
+
+.categorybtn{
+    width: 90px;
+    height: 30px;
+    font-size: x-small;
+    color: var(--white);
+    background-color: var(--green);
     border: none;
 }
-.custom-btn:hover{
-    background: #96BB36;
+
+.categorybtn:hover{
+    background-color: var(--midgrey);
+    color: var(--white);
 }
-.custom-style{
-    border: none;
-    background: none;
-}
+
 .bi-trash-fill{
-    font-size: 25px;
+    color: var(--midgrey);
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.bi-trash-fill:hover{
+    color: var(--green);
+}
+
+.skeleton2{
+    margin-top: 10px;
+    width: 700px !important;
+    height: 50px;
+}
+
+.loading{
+    margin-top: 30px;
+    margin-left: 130px;
+    margin-bottom: 50px;
+    height: min-content;
 }

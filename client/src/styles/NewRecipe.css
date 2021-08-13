@@ -1,121 +1,81 @@
-.my-recipes-container {
-  width: 90%;
-  height: 100%;
-  margin-left: 5%;
-  margin-top: 2%;
-}
-
-.div-my-recipes {
-  margin-top: 0px;
+.div-new-recipe {
   width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  margin-top: 30px;
+  padding-left: 80px;
 }
 
-::placeholder { 
-  color: #a5a5a5;
-  opacity: 1; 
+#line {
+  flex: 1;
+  margin-top: 17px;
+  margin-left: -130px;
+  margin-right: 10px;
+  width: fit-content;
+  height: 1.5px;
+  background-color: var(--lightgrey);
 }
 
-.form-control::placeholder { 
-  color: #a5a5a5;
-  opacity: 1; 
-}
-
-#myrecipes-title {
-  height: 48px;
-  padding-right: 20px;
-  text-align: left;
-  font: normal normal bold 36px/48px Roboto Slab;
-  letter-spacing: 0px;
-  color: #96bb36;
-  opacity: 1;
-}
-
-#hr10-2 {
-  margin-top: 34px;
-  flex-grow: 1;
-  border: none;
-  border-top: 1px solid silver;
+#newrecipe-title {
+  width: 250px;
+  height: 20px;
+  font-weight:bolder;
+  font-family: 'Roboto Slab', serif;
+  font-style: normal;
+  font-size: 20px;
+  color: var(--green);
 }
 
 .back-div {
-  width: 41px;
-  height: 41px;
-  background: var(--orange) 0% 0% no-repeat padding-box;
-  background: #F0972A 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #f1ecec29;
-  opacity: 1;
-  margin-left: 25px;
-  cursor: pointer;
-  border-radius: 50%;
-  text-align: center;
   display: flex;
-  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background-color: var(--orange);
+  cursor: pointer;
 }
 
 .icon-back {
-  display: block;
-  width: 18.6px;
-  height: 18.13px;
-  margin: 11px auto;
-  background: #F0972A 0% 0% no-repeat padding-box;
-  opacity: 1;
+  padding-left: 8px;
+  justify-self: center;
+  align-self: center;
+  color: var(--orange);
 }
 
 .new-recipe-form {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 90%;
   float: left;
-  margin-left: 0px;
-  margin-top: 13px;
+  margin-left: 80px;
+  margin-top: 20px;
 }
 
-.img-and-btn {
-  display: flex;
-  flex-direction: column;
+.img-upload {
+  width: min-content;
+  margin-right: 10px;
+  margin-top: 5px;
 }
 
-.image-title {
-  width: 122px;
-  height: 21px;
-  text-align: left;
-  font: normal normal bold 16px/21px Roboto Slab;
-  letter-spacing: 0px;
-  color: #f0972a;
+#recipeimg {
+  width: 170px;
+  height: 100px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 5px 5px var(--midgrey);
   margin-bottom: 10px;
 }
 
-.image-info {
-  width: 234px;
-  height: 147px;
-  box-shadow: 0px 3px 6px #00000029;
-  border: 1px solid #a5a5a5;
-  border-radius: 5px;
-  opacity: 1;
+input[type="file" i]{
+  width: 170px;
+  color: var(--orange);
+  font: normal normal bold 12px 'Roboto Slab', serif;
 }
 
-.input-image {
-  margin-top: 15px;
-}
-
-.image-btn {
-  width: 234px;
-  height: 32px;
-  border: 1px solid #a5a5a5;
-  opacity: 1;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
-  text-align: center;
-  font: normal normal normal 14px/19px Roboto;
-  letter-spacing: 0px;
-  color: #a5a5a5;
-  text-transform: uppercase;
-  padding: 4px 28px;
-  outline: none;
+.div-form-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .div-form-wrapper {
@@ -123,119 +83,110 @@
   flex-direction: row;
 }
 
-.div-form-column {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 100px;
-}
-
 .other-information {
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
+  width: min-content;
+}
+
+.first-part{
+  width: min-content;
 }
 
 .rcp-title-label {
-  width: 562px;
-  height: 21px;
+  width: 400px;
   text-align: left;
-  font: normal normal bold 16px/21px Roboto Slab;
+  font: normal normal bold 15px/20px Roboto Slab;
   letter-spacing: 0px;
-  color: #f0972a;
-  /* margin-bottom: 10px; */
+  color: var(--orange);
+  margin-bottom: 10px;
 }
 
 .rcp-title-input {
-  width: 562px;
+  width: 400px;
   height: 40px;
-  background: #f0efea 0% 0% no-repeat padding-box;
-  font: normal normal bold 16px/21px Roboto Slab;
-  color: #a5a5a5;
-  border: 1px solid #a5a5a5;
+  background: var(--softwhite) 0% 0% no-repeat padding-box;
+  font: normal normal bold 14px/19px Roboto Slab;
+  color: var(--midgrey);
+  border: 1px solid var(--midgrey);
   border-radius: 5px;
   opacity: 1;
   padding: 10px;
-  margin-top: 2px;
 }
 
 .second-part {
   display: flex;
   flex-direction: row;
   margin-top: 20px;
-  justify-content: space-between;
 }
 
 .category-label {
-  width: 179px;
-  height: 21px;
+  width: 120px;
   text-align: left;
-  font: normal normal bold 16px/21px Roboto Slab;
+  font: normal normal bold 15px/20px Roboto Slab;
   letter-spacing: 0px;
-  color: #f0972a;
+  color: var(--orange);
 }
 
 .category-select {
-  width: 179px;
+  width: 135px;
   height: 40px;
-  background: #f0efea 0% 0% no-repeat padding-box;
-  border: 1px solid #a5a5a5;
+  background: var(--softwhite) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--midgrey);
   border-radius: 5px;
   opacity: 1;
   text-align: left;
-  font: normal normal bold 14px/19px Roboto;
+  font: normal normal bold 12px/17px Roboto;
   letter-spacing: 0px;
-  color: #a5a5a5;
-  margin-top: 2px;
+  color: var(--midgrey);
   padding: 10px;
+  margin-right: 10px;
 }
 
 .preptime-label {
-  width: 165px;
-  height: 21px;
-
+  width: 150px;
   text-align: left;
-  font: normal normal bold 16px/21px Roboto Slab;
+  font: normal normal bold 15px/20px Roboto Slab;
   letter-spacing: 0px;
-  color: #f0972a;
+  color: var(--orange);
 }
 
 .preptime-input {
-  width: 165px;
+  width: 140px;
   height: 40px;
-  background: #f0efea 0% 0% no-repeat padding-box;
-  border: 1px solid #a5a5a5;
+  background: var(--softwhite) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--midgrey);
   border-radius: 5px;
   opacity: 1;
   text-align: left;
   font: normal normal bold 14px/19px Roboto;
   letter-spacing: 0px;
-  color: #a5a5a5;
-  margin-top: 2px;
+  color: var(--midgrey);
   padding: 10px;
+  margin-right: 10px;
 }
 
-.no-pepole-label {
-  width: 165px;
-  height: 21px;
+.no-people-label {
+  width: 100px;
   text-align: left;
-  font: normal normal bold 16px/21px Roboto Slab;
+  font: normal normal bold 15px/20px Roboto Slab;
   letter-spacing: 0px;
-  color: #f0972a;
+  color: var(--orange);
 }
 
 .no-people-input {
-  width: 165px;
+  width: 105px;
   height: 40px;
-  background: #f0efea 0% 0% no-repeat padding-box;
-  border: 1px solid #a5a5a5;
+  background: var(--softwhite) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--midgrey);
   border-radius: 5px;
   opacity: 1;
   text-align: left;
   font: normal normal bold 14px/19px Roboto;
   letter-spacing: 0px;
-  color: #a5a5a5;
-  margin-top: 2px;
+  color: var(--midgrey);
   padding: 10px;
+  margin-right: 10px;
 }
 
 .third-part {
@@ -243,72 +194,84 @@
 }
 
 .short-description-label {
-  width: 562px;
-  height: 21px;
+  width: 400px;
   text-align: left;
-  font: normal normal bold 16px/21px Roboto Slab;
+  font: normal normal bold 15px/20px Roboto Slab;
   letter-spacing: 0px;
-  color: #f0972a;
+  color: var(--orange);
 }
 
 .short-description-label-input {
-  width: 562px;
-  height: 96px;
-  background: #f0efea 0% 0% no-repeat padding-box;
-  border: 1px solid #a5a5a5;
+  width: 400px;
+  height: 100px;
+  background: var(--softwhite) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--midgrey);
   border-radius: 5px;
   opacity: 1;
   text-align: left;
   font: normal normal bold 14px/19px Roboto;
   letter-spacing: 0px;
-  color: #a5a5a5;
-  margin-top: 2px;
+  color: var(--midgrey);
   padding: 10px;
 }
 
-.recipe-information {
-  margin-left: 34px;
+.fourth-part{
+  width: min-content;
 }
 
 .main-recipe-label {
-  width: 352px;
-  height: 21px;
+  width: 250px;
   text-align: left;
-  font: normal normal bold 16px/21px Roboto Slab;
+  font: normal normal bold 15px/20px Roboto Slab;
   letter-spacing: 0px;
-  color: #f0972a;
+  color: var(--orange);
 }
 
 .main-recipe-label-input {
-  width: 352px;
-  height: 284px;
-  background: #f0efea 0% 0% no-repeat padding-box;
-  border: 1px solid #a5a5a5;
+  width: 250px;
+  height: 280px;
+  background: var(--softwhite) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--midgrey);
   border-radius: 5px;
   opacity: 1;
   text-align: left;
   font: normal normal bold 14px/19px Roboto;
   letter-spacing: 0px;
-  color: #a5a5a5;
+  color: var(--midgrey);
   margin-top: 2px;
   padding: 10px;
 }
 
 .recipe-save-btn {
-  width: 124px;
-  height: 40px;
-  background: #96bb36 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
+  width: 100px;
+  height: 35px;
+  background: var(--green) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 6px 6px var(--midgrey);
   opacity: 1;
   text-align: center;
-  font: normal normal 900 16px/21px Roboto;
+  font: normal normal 900 14px/19px Roboto;
   letter-spacing: 0px;
-  color: #ffffff;
-  text-transform: uppercase;
+  color: var(--white);
   border-radius: 5px;
   border: none;
   float: left;
-  margin-left: 40px;
-  margin-top: 40px;
+  margin-top: 20px;
   cursor: pointer;
+}
+
+.recipe-save-btn:hover{
+  background-color: var(--orange);
+  color: white;
+  border-color: var(--midgrey);
+}
+
+
+::placeholder { 
+  color: var(--lightgrey);
+  opacity: 1; 
+}
+
+.form-control::placeholder { 
+  color: var(--lightgrey);
+  opacity: 1; 
 }

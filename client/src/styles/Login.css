@@ -92,6 +92,24 @@ body {
   margin-top: 20px;
 }
 
+.google{
+  box-shadow: 0px 3px 6px var(--darkgrey);
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  height: 35px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: small;
+  color: white;
+  margin-left: 30px;
+}
+
+.google:hover{
+  background-color: var(--lightgrey);
+  transform: scale(1.07);
+}
+
 .formLoginButton:hover{
   background-color: var(--orange);
   transform: scale(1.07);

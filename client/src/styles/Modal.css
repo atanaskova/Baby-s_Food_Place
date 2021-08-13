@@ -6,31 +6,31 @@
 
 .bi-arrow-right-square-fill{
     font-size: 18px;
-    margin-left: 35px;
+    margin-left: 30px;
     color:var(--green);
     border: none;
     cursor:pointer;
 }
 
 .modal-bg{
-    width:520px;
     height:350px;
     box-shadow: 0 5px 20px rgb(255, 255, 255, 1);
     background-color: white;
     color:var(--midgrey);
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: minmax(100px, auto);    
     position: relative;
     z-index: 10;
     border-radius:3px;
 }
 
 .modalImg{
-    width:40%;
-    height:36%;
+    width:210px;
+    height:130px;
     border-radius: 4px;
     position:absolute;
-    margin-top:30px;
+    margin-top:50px;
     margin-left:20px;
     top:10px;
     left:0px;
@@ -55,7 +55,7 @@
     margin-top: 10px;
     margin-left: 20px;
     position: relative;
-    font-size: large;
+    font-size: x-large;
     font-weight: 700;
     font-family: 'Roboto Slab', serif;
     color:var(--orange);
@@ -63,7 +63,7 @@
 }
 
 .header{
-    width: 300px;
+    width: max-content;
     height: 35px;
 }
 
@@ -76,48 +76,49 @@ h6{
 
 .details{
     font-family: 'Roboto Slab', serif;
-    width:270px;
+    max-width: 210px !important;
+    overflow-wrap: break-word;
     color:var(--midgrey);
-    position:flex;
-    margin-top: 35px;
-    margin-left: -75px;
+    margin-top: 55px;
     font-size: 0.7rem;
+    justify-content: flex-start;
 }
 
 .description{
     font-family: 'Roboto Slab', serif;
-    width:210px;
-    height: 150px;
+    max-width: 210px !important;
+    overflow-wrap: break-word;
+    height: 100px;
     color:var(--midgrey);
-    position:flex;
-    margin-top: -180px;
-    margin-left: -300px;
     font-size: 0.6rem;
+    margin-left: 20px;
+    margin-top: -20px;
 }
 
 .descr-header{
     display: flex;
-    height: 22px;
-    width: 208px;
-    
+    height: 25px;
+    max-width: 210px !important;
 }
 
 .badge-pill.pill-b{
-    height: 15px;
+    height: 20px;
+    /* width: 40px; */
     background-color: var(--green);
     color: white;
     align-self: center;
     margin-bottom: 3px;
+    font-size: 10px;
 }
 
 .footer{
     font-family: 'Roboto Slab', serif;
-    display: flex;
-    margin-top: -40px;
-    margin-left: 20px;
     width: 300px;
     height: 35px;
     color: var(--darkgrey);
+    position: absolute;
+    bottom: 0;
+    left: 10px;
 }
 
 i{
@@ -125,6 +126,10 @@ i{
     font-size:10px;
     font-weight:500;
     color: rgb(47, 44, 44);
+}
+
+.footer .bi{
+    padding-left: 10px;
 }
 
 body.modal-open .bg{

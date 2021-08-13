@@ -4,11 +4,11 @@
     background: var(--green);
     box-shadow: 0px 3px 6px var(--darkgrey);
     border: none;
-    width: 140px;
+    width: 120px;
     height: 35px;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bolder;
-    padding-top: 10px;
+    padding-top: 11px;
 }
 
 .loginButton{
@@ -17,11 +17,53 @@
     box-shadow: 0px 3px 6px var(--darkgrey);
     border-style: solid;
     border-color: var(--midgrey);
-    width: 80px;
+    width: 70px;
     height: 35px;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bolder;
-    padding-top: 10px;
+    padding-top: 11px;
+}
+
+.logoutLink{
+    background: transparent;
+    color: var(--midgrey);
+    font-size: 10px;
+    font-weight: bolder;
+    padding: 0;
+}
+
+.myRecipesLink{
+    background: transparent;
+    color: var(--green);
+    font-size: 10px;
+    font-weight: bolder;
+    padding: 0;
+}
+
+.myProfileLink{
+    background: transparent;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: bolder;
+    padding: 0;
+}
+
+.logoutLink:hover{
+    background-color: transparent;
+    color: var(--midgrey);
+    transform: scale(1.1);
+}
+
+.myProfileLink:hover{
+    background-color: transparent;
+    color: var(--orange);
+    transform: scale(1.1);
+}
+
+.myRecipesLink:hover{
+    background-color: transparent;
+    color: var(--green);
+    transform: scale(1.1);
 }
 
 .createAccountButton:hover{
@@ -38,6 +80,13 @@
     color: var(--orange);
     font-size: 20pt;
     margin-top: -2px;
+}
+
+.circle-grey{
+    color: var(--darkgrey);
+    font-size: 15pt;
+    margin-top: -12px;
+    padding: 5px;
 }
 
 .mr-2{
@@ -61,4 +110,23 @@
 
 .link:hover {
     transform: scale(1.07);
+}
+
+.user{
+    color: var(--orange);
+    font-family: 'Roboto Slab', serif;
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.avatar{
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.actions{
+    font-family: 'Roboto Slab', serif;
+    padding-left: 20px;
 }

@@ -16,6 +16,14 @@ var usersSchema=mongoose.Schema({
     birthday:{
         type:Date,
         required:['Please provide your birth date']
+    },
+    password:{
+        type:String,
+        required:['Please provide the password']
+    },
+    picture:{
+        type:String,
+        required:['Please upload your picture']
     }
 });
 
