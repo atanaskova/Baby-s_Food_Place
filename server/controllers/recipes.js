@@ -51,15 +51,17 @@ module.exports={
     like:async(req,res)=>{
         try{
             const recipe=await Recipe.findById(req.params.id);
-            if(!recipe.likes.includes(req.user.id)){
-                await post.updateOne({$push:{likes:req.user.id}});
-                successResponse(res,200,'The post has been liked!');
-                likesMailer(req.user)
-            }else{
-                await post.updateOne({$pull:{likes:req.user.id}});
-                successResponse(res,200,'The post has been disliked!');
-            }
+            // if(!recipe.likes.includes(req.user.id)){
+            //     await post.updateOne({$push:{likes:req.user.id}});
+            //     successResponse(res,200,'The post has been liked!');
+            //     likesMailer(req.user)
+            // }else{
+            //     await post.updateOne({$pull:{likes:req.user.id}});
+            //     successResponse(res,200,'The post has been disliked!');
+            // }
 
+            const updatedRecipe=await Recipe.findByIdAndUpdate(req.params.id,{likes:recipe.likes+1});
+            res.send(updatedRecipe);
         }catch(error){
             errorResponse(res,500,error.message);
         }

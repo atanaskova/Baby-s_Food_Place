@@ -33,8 +33,8 @@ var recipesSchema=mongoose.Schema({
     //     ref:'User'
     // },
     likes:{
-        type:Array,
-        default:[]
+        type:Number,
+        default:0
     }
 });
 

@@ -6,8 +6,8 @@ export default (recipes=[],action)=>{
             return [...recipes, action.payload];
         case 'DELETE':
             return recipes.filter((recipe)=>recipe._id!==action.payload);
-        // case 'LIKE':
-        //     return [...recipes,action.payload];
+        case 'LIKE':
+            return recipes.map((recipe)=>recipe._id===action.payload._id ? action.payload : recipe);
         default:
             return recipes;
     }

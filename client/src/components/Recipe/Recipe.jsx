@@ -5,14 +5,8 @@ import ModalWindow from '../Modal/Modal';
 import {likeRecipe} from '../../actions/recipes';
 
 const Recipe=({recipe})=>{
-    // const likes=recipe.likes.length;
-    // const likes=recipe.likes;
     const dispatch=useDispatch();
-
-    // const handleLikes=()=>{
-    //     dispatch(likeRecipe(recipe));
-    // }
-
+    
     return(
         <div className="col-md-4">
             <img className="card-img-top" src={`${recipe.recipe_picture}`} alt='Recipe'/>
@@ -30,7 +24,7 @@ const Recipe=({recipe})=>{
 
                     <i className="bi bi-people">{recipe.no_people} people</i>
 
-                    <i className="bi bi-star" data-toggle="tooltip" title="I like this!" onClick={()=>{}}>{recipe.likes}</i>
+                    <i className="bi bi-star" data-toggle="tooltip" title="I like this!" onClick={()=>dispatch(likeRecipe(recipe._id))}>{recipe.likes}</i>
 
                     <ModalWindow recipe={recipe}/>
                 </span>

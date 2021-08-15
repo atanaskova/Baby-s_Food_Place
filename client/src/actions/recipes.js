@@ -27,11 +27,11 @@ export const deleteRecipe=(id)=>async(dispatch)=>{
     }
 }
 
-// export const likeRecipe=(recipe)=>async(dispatch)=>{
-//     try{
-//         const {data}=await api.likeRecipe(recipe);
-//         dispatch({type:'LIKE',payload:data})
-//     }catch(error){
-//         console.log(error.message)
-//     }
-// }
+export const likeRecipe=(id)=>async(dispatch)=>{
+    try{
+        await api.likeRecipe(id);
+        dispatch({type:'LIKE',payload:id})
+    }catch(error){
+        console.log(error.message)
+    }
+}
