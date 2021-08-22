@@ -23,8 +23,7 @@ var usersSchema=mongoose.Schema({
     },
     picture:{
         type:String,
-        required:['Please upload your picture']
-    }
+    },
 });
 
 module.exports=mongoose.model("User",usersSchema);

@@ -20,11 +20,17 @@ module.exports={
                 return errorResponse(res,400,'User exists with the provided email');
             }
 
-            req.body.password=bcrypt.hash(req.body.password,10);
+            req.body.password=bcrypt.hashSync(req.body.password,10);
 
-            user=await User.create(req.body);
+            await User.create(req.body);
 
-            registerMailer(user);
+            registerMailer(req.body);
+
+            const token=jwt.sign(payload,process.env.SECRET_AUTH_KEY,{
+                expiresIn:'60m'
+            });
+
+            // res.status(200).json({user,token});
 
             successResponse(res,`User registered.`);
         }catch(error){
@@ -65,7 +71,8 @@ module.exports={
                 expiresIn:'60m'
             });
 
-            successResponse(res,`You are successfully logged in! ${token}`);
+            res.status(200).json({user,token});
+            // successResponse(res,`You are successfully logged in! ${token}`);
         }catch(error){
             errorResponse(res,500,error.message);
         }

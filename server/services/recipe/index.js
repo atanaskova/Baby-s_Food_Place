@@ -22,6 +22,11 @@ app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000
 //     ]
 // }));
 app.use(cors());
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next()
+  });
 app.use((err,req,res,next)=>unauthorizedErrorHandler(err,req,res,next));
 app.use('/recipes',router);
 app.listen(process.env.RECIPE_API_PORT,error=>serverStartLogger('Recipe',process.env.RECIPE_API_PORT,error));

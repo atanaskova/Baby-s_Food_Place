@@ -3,6 +3,7 @@ require('../models/user');
 const likesMailer=require('../lib/handlers/mail-handler/likes-mail');
 const successResponse=require('../lib/handlers/success-response-sender');
 const errorResponse=require('../lib/handlers/error-response-sender');
+const unauthorizedErrorHandler=require('../lib/handlers/unauthorized-error-handler');
 
 module.exports={
     fetchAll: async(req,res)=>{
@@ -50,18 +51,22 @@ module.exports={
     },
     like:async(req,res)=>{
         try{
-            const recipe=await Recipe.findById(req.params.id);
-            // if(!recipe.likes.includes(req.user.id)){
-            //     await post.updateOne({$push:{likes:req.user.id}});
-            //     successResponse(res,200,'The post has been liked!');
-            //     likesMailer(req.user)
-            // }else{
-            //     await post.updateOne({$pull:{likes:req.user.id}});
-            //     successResponse(res,200,'The post has been disliked!');
-            // }
+            if(!req.userId) return unauthorizedErrorHandler(err,req,res,next);
 
-            const updatedRecipe=await Recipe.findByIdAndUpdate(req.params.id,{likes:recipe.likes+1});
-            res.send(updatedRecipe);
+            const recipe=await Recipe.findById(req.params.id);
+
+            if(!recipe.likes.includes(req.userId)){
+                await recipe.updateOne({$push:{likes:req.userId}});
+                successResponse(res,200,'The recipe has been liked!');
+                likesMailer(req.user);
+            }else{
+                await recipe.updateOne({$pull:{likes:req.userId}});
+                successResponse(res,200,'The recipe has been disliked!');
+            }
+
+
+            const updatedRecipe=await Recipe.findByIdAndUpdate(req.params.id,recipe,{new:true});
+            res.json(updatedRecipe);
         }catch(error){
             errorResponse(res,500,error.message);
         }
