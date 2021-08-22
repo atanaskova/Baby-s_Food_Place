@@ -21,7 +21,7 @@ export const createRecipe=(recipe)=>async(dispatch)=>{
 export const deleteRecipe=(id)=>async(dispatch)=>{
     try {
         await api.deleteRecipe(id);
-        dispatch({type:'DELETE',payload:id})
+        dispatch({type:'DELETE', payload:id})
     } catch (error) {
         console.log(error);
     }
@@ -30,7 +30,7 @@ export const deleteRecipe=(id)=>async(dispatch)=>{
 export const likeRecipe=(id)=>async(dispatch)=>{
     try{
         await api.likeRecipe(id);
-        dispatch({type:'LIKE',payload:id})
+        dispatch({type:'LIKE', payload:id})
     }catch(error){
         console.log(error.message)
     }

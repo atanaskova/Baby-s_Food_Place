@@ -7,14 +7,18 @@ import {login} from '../../actions/auth';
 import '../../styles/Login.css';
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({email: '', password: '',});
+  const [user, setUser] = useState({email: '', password: '',});
   const dispatch=useDispatch();
   const history=useHistory();
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    dispatch(login(formData,history));
+    dispatch(login(user,history));
   }
+
+  const handleChange=(e)=>{
+    setUser({...user, [e.target.name] : e.target.value});
+  };
 
   const googleSuccess=async(res)=>{
     const result=res.profileObj;
@@ -43,9 +47,8 @@ const LoginForm = () => {
           name='email' 
           className="placeholder-style" 
           label="Email"
-          value={formData.email}
-          onChange={(e)=>setFormData({...formData, email:e.target.value})}/>
-        </FormGroup>
+          onChange={handleChange}/>
+          </FormGroup>
 
         <FormGroup controlId="password">
           <FormLabel className='text-style' id="text-style-2">Password</FormLabel>
@@ -55,9 +58,8 @@ const LoginForm = () => {
           name='password' 
           className="placeholder-style"
           label="Password"
-          value={formData.password}
-          onChange={(e)=>setFormData({...formData, password:e.target.value})}/>
-        </FormGroup>
+          onChange={handleChange}/>
+          </FormGroup>
         <button type="submit" className="formLoginButton">LOG IN</button>
         <GoogleLogin
           clientId="538887536596-2johobc7j611db0n8rnpei2l1n26p62n.apps.googleusercontent.com"
