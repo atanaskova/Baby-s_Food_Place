@@ -18,7 +18,7 @@ module.exports=(user)=>{
         from:'babysfoodplace@hotmail.com',
         to:user.email,
         subject:"Welcome back!",
-        text:`Hello ${user.first_name}, you have successfully logged in to our page!`,
+        text:`Hello ${user.name}, you have successfully logged in to our page!`,
         html: {path:'./lib/handlers/mail-handler/login-mail.html'}
 
     });

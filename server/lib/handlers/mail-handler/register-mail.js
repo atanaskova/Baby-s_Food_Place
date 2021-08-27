@@ -30,7 +30,7 @@ module.exports=(user)=>{
             from:'babysfoodplace@hotmail.com',
             to:user.email,
             subject:"Confirm registration!",
-            text:`Hello ${user.first_name}, Please click the link to confirm your email and log in: Thank you!`,
+            text:`Hello ${user.name}, Please click the link to confirm your email and log in: Thank you!`,
             html: {path:'./lib/handlers/mail-handler/register-mail.html'}
         });
     }

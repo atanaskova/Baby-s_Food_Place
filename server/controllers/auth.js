@@ -22,17 +22,22 @@ module.exports={
 
             req.body.password=bcrypt.hashSync(req.body.password,10);
 
-            await User.create(req.body);
+            const result=await User.create(req.body);
 
-            registerMailer(req.body);
+            registerMailer(result);
+
+            const payload={
+                id:result._id,
+                email:result.email
+            }
 
             const token=jwt.sign(payload,process.env.SECRET_AUTH_KEY,{
                 expiresIn:'60m'
             });
 
-            // res.status(200).json({user,token});
+            res.status(200).json({result,token});
 
-            successResponse(res,`User registered.`);
+            // successResponse(res,`User registered.`);
         }catch(error){
             errorResponse(res,500,error.message);
         }
@@ -49,29 +54,29 @@ module.exports={
     // },
     login:async(req,res)=>{
         try{
-            const user=await User.findOne({email:req.body.email})
-            if(!user){
+            const result=await User.findOne({email:req.body.email})
+            if(!result){
                 return errorResponse(res,400,'Bad Request. User with the provided email does not exist.');
             }
-            // if (!user.confirmed) {
+            // if (!result.confirmed) {
             //     return errorResponse(res,400,'Please confirm your email to login');
             // }
-            if(!bcrypt.compare(req.body.password,user.password)){
+            if(!bcrypt.compare(req.body.password,result.password)){
                 return errorResponse(res,400,'Incorrect password.');
             }
 
-            logInMailer(user);    
+            logInMailer(result);    
             
             const payload={
-                id:user._id,
-                email:user.email
+                id:result._id,
+                email:result.email
             }
         
             const token=jwt.sign(payload,process.env.SECRET_AUTH_KEY,{
                 expiresIn:'60m'
             });
 
-            res.status(200).json({user,token});
+            res.status(200).json({result,token});
             // successResponse(res,`You are successfully logged in! ${token}`);
         }catch(error){
             errorResponse(res,500,error.message);

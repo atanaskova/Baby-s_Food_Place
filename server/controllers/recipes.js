@@ -1,5 +1,4 @@
 const Recipe=require('../models/recipe');
-require('../models/user');
 const likesMailer=require('../lib/handlers/mail-handler/likes-mail');
 const successResponse=require('../lib/handlers/success-response-sender');
 const errorResponse=require('../lib/handlers/error-response-sender');
@@ -9,7 +8,7 @@ module.exports={
     fetchAll: async(req,res)=>{
         try{
             const recipes=await Recipe.find()
-            // .populate('user',['email','first_name','last_name'])
+            // .populate('user',['email','name','surname'])
             res.send(recipes);
             // successResponse(res,'List of all recipes',recipes);
         }catch(error){
@@ -17,12 +16,8 @@ module.exports={
         }
     },
     create: async(req,res)=>{
-        // let data={
-        //         ...req.body,
-        //         user:req.user.id
-        // } OVA E ZA DOLU ZA VO TRY
         try{
-            const recipe=await Recipe.create(req.body);
+            const recipe=await Recipe.create({...req.body,user:req.userId,created:new Date().toISOString()});
             successResponse(res,'New recipe created', recipe);
         }catch(error){
             errorResponse(res,500,error.message)
@@ -50,25 +45,24 @@ module.exports={
         }
     },
     like:async(req,res)=>{
-        try{
+            const {id}=req.params;
+
             if(!req.userId) return unauthorizedErrorHandler(err,req,res,next);
 
-            const recipe=await Recipe.findById(req.params.id);
+            const recipe=await Recipe.findById(id);
+            const index=recipe.likes.findIndex((id)=>id===String(req.userId));
 
-            if(!recipe.likes.includes(req.userId)){
-                await recipe.updateOne({$push:{likes:req.userId}});
-                successResponse(res,200,'The recipe has been liked!');
-                likesMailer(req.user);
+            if(index===-1){
+                recipe.likes.push(req.userId);
+                likesMailer(recipe.user);
+                // successResponse(res,200,'The recipe has been liked!');
             }else{
-                await recipe.updateOne({$pull:{likes:req.userId}});
-                successResponse(res,200,'The recipe has been disliked!');
+               recipe.likes=recipe.likes.filter((id)=>id!==String(req.userId));
+                // successResponse(res,200,'The recipe has been disliked!');
             }
 
 
-            const updatedRecipe=await Recipe.findByIdAndUpdate(req.params.id,recipe,{new:true});
-            res.json(updatedRecipe);
-        }catch(error){
-            errorResponse(res,500,error.message);
-        }
-    },
+            const updatedRecipe=await Recipe.findByIdAndUpdate(id,recipe,{new:true});
+            res.status(200).json(updatedRecipe);
+    }
 };

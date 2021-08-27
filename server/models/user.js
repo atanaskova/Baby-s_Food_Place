@@ -1,11 +1,11 @@
 var mongoose=require("mongoose");
 
 var usersSchema=mongoose.Schema({
-    first_name:{
+    name:{
         type:String,
         required:['Please provide the first name of the user']
     },
-    last_name:{
+    surname:{
         type:String,
         required:['Please provide the last name of the user']
     },
@@ -21,7 +21,7 @@ var usersSchema=mongoose.Schema({
         type:String,
         required:['Please provide the password']
     },
-    picture:{
+    imageUrl:{
         type:String,
     },
 });

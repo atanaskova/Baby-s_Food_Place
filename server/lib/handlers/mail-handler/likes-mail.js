@@ -1,9 +1,10 @@
 const nodemailer=require("nodemailer");
 const events=require('events');
 const emitter=new events.EventEmitter();
+const User=require('../../../models/user');
 require('dotenv').config();
 
-module.exports=(user)=>{
+module.exports=(userId)=>{
 
     var transporter = nodemailer.createTransport({
         host: "smtp.mailtrap.io",
@@ -15,11 +16,12 @@ module.exports=(user)=>{
       });
 
    const like=async()=>{
+       const user=await User.findById(userId);
     await transporter.sendMail({
         from:'babysfoodplace@hotmail.com',
         to:user.email,
         subject:"Wohoo you have a like!",
-        text:`Hellooo ${user.first_name}, someone liked your recipe! You're famous, keep going!`,
+        text:`Hellooo ${user.name}, someone liked your recipe! You're famous, keep going!`,
     });
 }
 

@@ -28,14 +28,18 @@ var recipesSchema=mongoose.Schema({
     recipe_picture:{
         type:String
     },
-    // user:{
-    //     type:mongoose.Types.ObjectId,
-    //     ref:'User'
-    // },
+    user:{
+        type:mongoose.Types.ObjectId,
+        ref:'User'
+    },
     likes:{
         type:[String],
         default:[]
-    }
+    },
+    created:{
+        type:Date,
+        default: new Date()
+    },
 });
 
 module.exports=mongoose.model("Recipe", recipesSchema)

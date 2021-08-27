@@ -18,7 +18,7 @@ module.exports=(user)=>{
             from:'babysfoodplace@hotmail.com',
             to:user.email,
             subject:'Reset Password',
-            text:`Hello ${user.first_name}! Click on the link to reset your password: localhost:3003/api/v1/auth/reset-password`
+            text:`Hello ${user.name}! Click on the link to reset your password: localhost:3003/api/v1/auth/reset-password`
         });
     }
 
