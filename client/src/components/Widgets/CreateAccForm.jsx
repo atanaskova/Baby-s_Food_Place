@@ -6,17 +6,17 @@ import {register} from '../../actions/auth';
 import '../../styles/CreateAccForm.css';
 
 const CreateAccForm = () => {
-  const [user, setUser] = useState({first_name:'', last_name:'', email:'', birthday:'', password:'', confirmation_password:'',picture:''});
+  const [userData, setUserData] = useState({name:'', surname:'', email:'', birthday:'', password:'', confirmation_password:'',imageUrl:''});
   const dispatch=useDispatch();
   const history=useHistory();
   
   const handleSubmit=(e)=>{
     e.preventDefault();
-    dispatch(register(user,history));
+    dispatch(register(userData,history));
   };
 
   const handleChange=(e)=>{
-    setUser({...user, [e.target.name] : e.target.value});
+    setUserData({...userData, [e.target.name] : e.target.value});
   };
 
   return (
@@ -25,14 +25,14 @@ const CreateAccForm = () => {
 
         <FormGroup className="left-box">
 
-          <FormGroup controlId="firstName">
+          <FormGroup controlId="name">
             <FormLabel className='text-style'>First Name</FormLabel>
             <FormControl
             className="bgd-style"
             type="text"
             placeholder='John' 
-            name="first_name" 
-            label="FirstName"
+            name="name" 
+            label="name"
             onChange={handleChange}/>
           </FormGroup>
 
@@ -64,14 +64,14 @@ const CreateAccForm = () => {
 
         <FormGroup className="right-box">
 
-          <FormGroup controlId="lastName">
+          <FormGroup controlId="surname">
             <FormLabel className='text-style'>Last Name</FormLabel>
             <FormControl 
             type='text' 
             placeholder='Smith' 
-            name='last_name' 
+            name='surname' 
             className="bgd-style"
-            label="LastName"
+            label="surname"
             onChange={handleChange}/>
           </FormGroup>
 

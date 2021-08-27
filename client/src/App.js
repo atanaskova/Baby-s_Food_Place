@@ -8,6 +8,7 @@ import Login from './components/Widgets/Login';
 import Register from './components/Widgets/CreateAccount';
 import MyRecipes from './components/MyRecipes/MyRecipes';
 import NewRecipe from './components/Widgets/NewRecipe';
+import MyProfile from './components/MyProfile/MyProfile';
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
 
           <Route path='/newrecipe'>
             <NewRecipe />
+          </Route>
+
+          <Route exact path='/myprofile'>
+            <MyProfile />
           </Route>
 
           <Route exact path='/'>

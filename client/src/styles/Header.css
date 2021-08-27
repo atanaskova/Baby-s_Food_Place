@@ -113,16 +113,38 @@
 }
 
 .user{
+    display: flex;
     color: var(--orange);
     font-family: 'Roboto Slab', serif;
-    font-size: 12px;
+    font-size: 15px;
     padding-top: 10px;
+    justify-content: center;
+}
+
+.username{
+    align-self: center;
 }
 
 .avatar{
     border-radius: 50px;
     width: 50px;
     height: 50px;
+    margin-right: 10px;
+}
+
+.avatar2{
+    background-color:var(--green);
+    opacity: 0.8;
+    box-shadow: 0px 0px 5px 2px var(--orange);
+    color: var(--softwhite);
+    font-size: large;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
     margin-right: 10px;
 }
 

@@ -3,12 +3,22 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from 'react-redux';
 import {deleteRecipe} from '../../actions/recipes';
 import { useTrail, animated as a } from "react-spring";
+import moment from 'moment';
 
 const config = { mass: 5, tension: 2000, friction: 200 };
 
-const TableRow = ({createdOn}) => {
+const TableRow = () => {
   const dispatch=useDispatch();
-  const recipes=useSelector((state)=>state.recipes)
+  const recipes=useSelector((state)=>state.recipes);
+
+  const getDate=(date)=>{
+    let hours = moment().diff(moment(date),'hours');
+    if(hours>=24){
+      return moment(date).format("MMM Do YYYY");
+    }else{
+      return moment(date).fromNow();
+    }
+  }
 
   const trail = useTrail(recipes.length, {
     config,
@@ -34,7 +44,10 @@ const TableRow = ({createdOn}) => {
               {recipes[index].category.toUpperCase()}
             </Button>
           </td>
-          <td className="py-3">{createdOn}</td>
+          <td className="py-3">
+          {getDate(recipes[index].created)}
+            {/* {moment(recipes[index].created).fromNow()} */}
+          </td>
           <td></td>
           <td></td>
           <td className="py-3" colSpan="2">

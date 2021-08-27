@@ -6,6 +6,27 @@ import {likeRecipe} from '../../actions/recipes';
 
 const Recipe=({recipe})=>{
     const dispatch=useDispatch();
+    const user=JSON.parse(localStorage.getItem('profile'));
+
+    const Likes = () => {
+      if(typeof recipe.likes=== 'undefined'){
+        return <span className="likes-count"><i className="bi bi-star" />Like</span>;
+      }else
+        if (recipe.likes.length-1 > 0) {
+          if(user){
+          return recipe.likes.find((like) => like === (user.result.googleId || user.result._id))
+            ? (
+              <span className="likes-count"><i className="bi bi-star-fill" />{recipe.likes.length-1} {recipe.likes.length-1 === 1 ? 'like' : 'likes'}</span>
+            ) : (
+              <span className="likes-count"><i className="bi bi-star" />{recipe.likes.length-1} {recipe.likes.length-1 === 1 ? 'like' : 'likes'}</span>
+            );
+          }else{
+            return  <span className="likes-count"><i className="bi bi-star" />{recipe.likes.length-1} {recipe.likes.length-1 === 1 ? 'like' : 'likes'}</span>
+            }
+        }else{
+        return <span className="likes-count"><i className="bi bi-star" />Like</span>;
+        }
+      };
     
     return(
         <div className="col-md-4">
@@ -24,7 +45,7 @@ const Recipe=({recipe})=>{
 
                     <i className="bi bi-people">{recipe.no_people} people</i>
 
-                    <i className="bi bi-star" data-toggle="tooltip" title="I like this!" onClick={()=>dispatch(likeRecipe(recipe._id))}>{recipe.likes}</i>
+                    <span className="likes-count" data-toggle="tooltip" title="I like this!" onClick={()=>dispatch(likeRecipe(recipe._id))}><Likes /></span>
 
                     <ModalWindow recipe={recipe}/>
                 </span>

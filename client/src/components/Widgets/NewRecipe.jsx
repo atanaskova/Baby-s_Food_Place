@@ -14,10 +14,11 @@ const NewRecipe = () => {
   const [recipeData,setRecipeData]=useState({recipe_title:'', category:'',preparation_time:'',no_people:'',recipe_description:'',recipe_details:'',recipe_picture:'',user:'',likes:''})
   const dispatch=useDispatch();
   const history = useHistory();
+  const user=JSON.parse(localStorage.getItem('profile'));
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    dispatch(createRecipe(recipeData));
+    dispatch(createRecipe({...recipeData,user:user.result._id}));
     history.push('/');
   }
 

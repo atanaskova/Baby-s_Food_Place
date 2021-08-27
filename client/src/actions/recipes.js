@@ -28,9 +28,10 @@ export const deleteRecipe=(id)=>async(dispatch)=>{
 }
 
 export const likeRecipe=(id)=>async(dispatch)=>{
+    const user = JSON.parse(localStorage.getItem('profile'));
     try{
-        await api.likeRecipe(id);
-        dispatch({type:'LIKE', payload:id})
+        const {data}=await api.likeRecipe(id,user.token);
+        dispatch({type:'LIKE', payload:data});
     }catch(error){
         console.log(error.message)
     }

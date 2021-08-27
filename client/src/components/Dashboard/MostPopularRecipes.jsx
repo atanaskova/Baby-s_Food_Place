@@ -1,9 +1,19 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
+import Skeleton,{SkeletonTheme} from 'react-loading-skeleton';
 import '../../styles/Dashboard.css';
-import ModalWindow from '../Modal/Modal';
+import '../../styles/Modal.css';
+import Recipe from '../Recipe/Recipe';
 
 const MostPopularRecipes=()=>{
+    const recipes=useSelector((state)=>state.recipes)
+    const last=recipes.slice(-3);
+
     return (
+        !recipes.length ? 
+        <SkeletonTheme color="#F5BE14"> 
+            <Skeleton className="skeleton" count={3}/>
+        </SkeletonTheme> : (             
         <div className="container-fluid" style={{width:780}}>
 
              <div className="separator">
@@ -12,28 +22,16 @@ const MostPopularRecipes=()=>{
             </div>
 
             <div className="row" style={{paddingTop:20}}>
-                <div className="col-md-4">
-                    <div className="card">
-                        <img className="card-img-top" src='' alt="Energy Booster"/>
-                        <span className="badge badge-pill pill-a" style={{fontSize:10}}>dinner</span>
-                        <div className="card-body">
-                            <h6 className="card-title">Energy Booster</h6>
-                            <p className="card-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.The point of using Lorem Ipsum is that it has a more-or-less normal</p>
-                        </div>
-                        <div className="card-body F">
-                            <i className="bi bi-clock"> 45 min</i>
-                            <i className="bi bi-people"> 4 persons</i>
-                            <i className="bi bi-star" data-toggle="tooltip" title="I like this!"> 28</i>
-
-                            <ModalWindow/>
-
-                        </div>
+                {last.map((recipe)=>(
+                    <div 
+                        key={recipe._id}
+                        className="card">
+                        <Recipe recipe={recipe}/>
                     </div>
-                </div>
-
+                ))}
             </div>
         </div>
+        )
     )
 }
-
 export default MostPopularRecipes;

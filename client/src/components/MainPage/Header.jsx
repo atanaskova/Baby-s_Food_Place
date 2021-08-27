@@ -15,11 +15,13 @@ const Header = () => {
       setUser(null);
     };
 
-    // useEffect(()=>{
-    //   let token='';
-    //   user.token? token:user.token;
-    //   setUser((JSON.parse(localStorage.getItem('profile'))));
-    // },[])
+    useEffect(()=>{
+      let token='';
+      if(user && user.token){
+      token=user.token;
+      setUser((JSON.parse(localStorage.getItem('profile'))));
+    }else token='';
+    },[])
 
     return(
         <Navbar className='nav-header'>
@@ -36,21 +38,28 @@ const Header = () => {
             </Nav>
             {user ? (
               <span>
-                  {user.result.imageUrl ? (
-                      <div className="user">
-                      <img className="avatar" alt={user.result.name} src={user.result.imageUrl}/>
-                      {user.result.name}
-                      </div>
-                    ):(
-                      <div className="user">
-                      <span className="avatar">{user.result.name.charAt(0)}</span>
-                      {user.result.name}
-                      </div>
-                    )}
+                  {user.result.imageUrl? (
+                    <Row className="user">
+                      <img className="avatar" alt="avatar" src={user.result.imageUrl}/>
+                      <div className="username">{user.result.name}</div>
+                    </Row>
+                  ):(
+                    user.result.surname? (
+                    <Row className="user">
+                      <div className="avatar2">{user.result.name.charAt(0)}</div>
+                      <div className="username">{user.result.name}  {user.result.surname}</div>
+                    </Row>
+                  ):(
+                    <Row className="user">
+                      <div className="avatar2">{user.result.name.charAt(0)}</div>
+                      <div className="username">{user.result.name}</div>
+                    </Row>
+                    )
+                  )}
                 <Row className="actions">
                 <Nav.Link className="myRecipesLink" href="/myrecipes">MY RECIPES</Nav.Link>
                 <span className="circle-grey">&bull;</span>
-                <Nav.Link className="myProfileLink" href="/">MY PROFILE</Nav.Link>
+                <Nav.Link className="myProfileLink" href="/myprofile">MY PROFILE</Nav.Link>
                 <span className="circle-grey">&bull;</span>
                 <Nav.Link className="logoutLink" onClick={logout}>LOG OUT</Nav.Link>
                 </Row>

@@ -1,21 +1,21 @@
 import * as api from '../api';
 
-export const login=(user,history)=>async(dispatch)=>{
+export const login=(userData,history)=>async(dispatch)=>{
     try {
-       const {data}=await api.login(user);
+       const {data}=await api.login(userData);
         dispatch({type: 'AUTH', data});
-       history.push('/');
+        history.push('/');
     } catch (error) {
-        console.log(error.response.data);
+        console.log(error.message);
     }
 }
 
-export const register=(user,history)=>async(dispatch)=>{
+export const register=(userData,history)=>async(dispatch)=>{
     try {
-        const {data}=await api.register(user);
-         dispatch({type: 'AUTH', data});
+        const {data}=await api.register(userData);
+        dispatch({type: 'AUTH', data});
         history.push('/');
     } catch (error) {
-        console.log(error.response.data);
+        console.log(error.message);
     }
 }

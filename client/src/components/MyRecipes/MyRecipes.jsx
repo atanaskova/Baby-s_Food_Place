@@ -44,7 +44,7 @@ const MyRecipes = () => {
           </tr>
         </thead>
         <tbody>
-            <TableRow createdOn={"22.11.2020"}/>
+            <TableRow />
         </tbody>
       </Table>
         )}
