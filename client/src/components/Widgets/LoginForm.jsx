@@ -75,6 +75,7 @@ const LoginForm = () => {
           onFailure={googleFailure}
           cookiePolicy="single_host_origin"
           />
+        <button type="submit" className="forgot-password">Forgot your password?</button>
       </Form>
     </div>
   );

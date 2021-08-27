@@ -32,7 +32,7 @@ module.exports={
             }
 
             const token=jwt.sign(payload,process.env.SECRET_AUTH_KEY,{
-                expiresIn:'60m'
+                expiresIn:'120m'
             });
 
             res.status(200).json({result,token});
@@ -73,7 +73,7 @@ module.exports={
             }
         
             const token=jwt.sign(payload,process.env.SECRET_AUTH_KEY,{
-                expiresIn:'60m'
+                expiresIn:'120m'
             });
 
             res.status(200).json({result,token});

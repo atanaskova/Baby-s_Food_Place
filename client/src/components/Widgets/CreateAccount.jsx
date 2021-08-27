@@ -24,11 +24,10 @@ const CreateAccount = () => {
                             <span id="black-letters">account</span>
                         </p>
 
-                        <p className="text-box-register">
+                        <p className="text-box">
                             Wondering what to make for dinner tonight? <br/>
                             Baby's Food Place is here to help you cook delicious meals with less stress and more joy. <br/>
-                            We offer recipes and cooking advice for home cooks, by home cooks. <br/>
-                            Find thousands of popular recipes approved by our test kitchen and cooked by our community. Browse easy recipes for breakfast, lunch, brunch, dinner and more.
+                            We offer recipes and cooking advice for home cooks, by home cooks. 
                         </p>
 
                     </div>

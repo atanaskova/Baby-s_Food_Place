@@ -11,13 +11,13 @@ const Login = () => {
 
       <div className="container-fluid" style={{width:780}}>
           
-          <div className="separator4">
+          <div className="separator5">
               <h2>Log In</h2>
-              <div className="line4"></div>
+              <div className="line5"></div>
           </div>
 
           <div className="login-form">
-              <div className="first-box">
+              <div className="first-box-1">
                 <p className="welcome-title">
                   <span id="orange-letters-login">Welcome to</span>
                   <br/>
@@ -25,7 +25,9 @@ const Login = () => {
                 </p>
 
                 <p className="text-box-login">
-                Join other Baby's Food Place users and get access to thousands of recipes, cooking tips and hacks.
+                Join other Baby's Food Place users and get access to thousands of recipes, cooking tips and hacks.<br/>
+                Browse easy recipes for breakfast, lunch, brunch, dinner and more.<br/>
+                Find thousands of popular recipes approved by our test kitchen and cooked by our community.
                 </p>
               </div>
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import decode from 'jwt-decode';
 import '../../styles/Header.css';
 import { Nav, Container, Navbar, Button, Row } from 'react-bootstrap';
 
@@ -16,12 +17,16 @@ const Header = () => {
     };
 
     useEffect(()=>{
-      let token='';
       if(user && user.token){
-      token=user.token;
+      const token=user.token;
+
+      if(token){
+        const decodedToken=decode(token);
+
+        if(decodedToken.exp *1000<new Date().getTime()) logout();
+      }
       setUser((JSON.parse(localStorage.getItem('profile'))));
-    }else token='';
-    },[])
+    }},[]);
 
     return(
         <Navbar className='nav-header'>

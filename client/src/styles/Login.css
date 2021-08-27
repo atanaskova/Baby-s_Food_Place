@@ -2,14 +2,14 @@ body {
   background: var(--softwhite) 0% 0% no-repeat padding-box;
 }
 
-.separator4{
+.separator5{
   padding-top: 40px;
   padding-left: 20px;
   display: flex;
   align-items: center;
 }
 
-.separator4 h2{
+.separator5 h2{
   width: 250px;
   height: 20px;
   font-weight: bolder;
@@ -19,7 +19,7 @@ body {
   color: var(--green);
 }
 
-.line4{
+.line5{
   flex: 1;
   margin-top: 15px;
   margin-left: -160px;
@@ -28,9 +28,13 @@ body {
   background-color: var(--lightgrey);
 }
 
+.first-box-1{
+  padding-top: 50px;
+}
+
 .log-form-box {
   flex: 1;
-  padding-top: 20px;
+  padding-top:60px
 }
 
 #orange-letters-login {
@@ -62,7 +66,6 @@ body {
 
 .login-form {
   display: flex;
-  padding-top: 50px;
   padding-bottom: 70px;
   padding-left: 20px;
 }
@@ -113,6 +116,24 @@ body {
 .formLoginButton:hover{
   background-color: var(--orange);
   transform: scale(1.07);
+}
+
+.forgot-password {
+  background: transparent;
+  border: none;
+  width: 150px;
+  height: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  color: rgb(0, 94, 255);
+  margin-top: 10px;
+  margin-left: -20px;
+}
+
+.forgot-password:hover{
+  color: var(--orange);
+  transform: scale(1.05);
+  text-decoration: underline;
 }
 
 .placeholder-style {
