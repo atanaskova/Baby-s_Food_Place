@@ -10,6 +10,20 @@ const config = { mass: 5, tension: 2000, friction: 200 };
 const TableRow = () => {
   const dispatch=useDispatch();
   const recipes=useSelector((state)=>state.recipes);
+  const user=JSON.parse(localStorage.getItem('profile'));
+  const myrecipes=[];
+
+  function myRecipes(recipes){
+    recipes.map((recipe)=>{
+      if(user.result._id===recipe.user){
+        myrecipes.push(recipe);
+      }
+      return myrecipes;
+    })
+  }
+
+  myRecipes(recipes);
+
 
   const getDate=(date)=>{
     let hours = moment().diff(moment(date),'hours');
@@ -20,7 +34,7 @@ const TableRow = () => {
     }
   }
 
-  const trail = useTrail(recipes.length, {
+  const trail = useTrail(myrecipes.length, {
     config,
     opacity: 1,
     x: 0,
@@ -29,32 +43,33 @@ const TableRow = () => {
   });
 
   return (
-    trail.map(({ x, height, ...rest }, index) => (
-        <a.tr className="py-5" key={recipes[index]._id} 
+    myrecipes.length ?  (
+      trail.map(({ x, height, ...rest }, index) => (
+        <a.tr className="py-5" key={myrecipes[index]._id} 
           style={{
             ...rest,
             transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
           }}>
           <td className="py-3 font-weight-bold"
           style={{ height }}>
-            {recipes[index].recipe_title}
+            {myrecipes[index].recipe_title}
           </td>
           <td className="py-3">
             <Button className="font-weight-bold categorybtn">
-              {recipes[index].category.toUpperCase()}
+              {myrecipes[index].category.toUpperCase()}
             </Button>
           </td>
           <td className="py-3">
-          {getDate(recipes[index].created)}
-            {/* {moment(recipes[index].created).fromNow()} */}
+          {getDate(myrecipes[index].created)}
           </td>
           <td></td>
           <td></td>
           <td className="py-3" colSpan="2">
-            <i className="bi bi-trash-fill" onClick={()=>dispatch(deleteRecipe(recipes[index]._id))}></i>
+            <i className="bi bi-trash-fill" onClick={()=>dispatch(deleteRecipe(myrecipes[index]._id))}></i>
           </td>
         </a.tr>
       ))
+      ):null
   );
 };
 export default TableRow;

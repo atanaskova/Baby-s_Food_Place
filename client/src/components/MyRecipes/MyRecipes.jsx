@@ -12,12 +12,12 @@ import Skeleton,{SkeletonTheme} from 'react-loading-skeleton';
 
 const MyRecipes = () => {
   const dispatch=useDispatch();
+  const recipes=useSelector((state)=>state.recipes)
 
   useEffect(()=>{
     dispatch(getRecipes());
   },[dispatch]);
 
-  const recipes=useSelector((state)=>state.recipes)
 
   return (
     <div>

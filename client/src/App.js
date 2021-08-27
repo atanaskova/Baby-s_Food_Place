@@ -7,7 +7,7 @@ import Main from './components/MainPage/Main';
 import Login from './components/Widgets/Login';
 import Register from './components/Widgets/CreateAccount';
 import MyRecipes from './components/MyRecipes/MyRecipes';
-import NewRecipe from './components/Widgets/NewRecipe';
+import NewRecipe from './components/MyRecipes/NewRecipe';
 import MyProfile from './components/MyProfile/MyProfile';
 
 function App() {
