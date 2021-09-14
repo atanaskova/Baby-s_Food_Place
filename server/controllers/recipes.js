@@ -23,18 +23,6 @@ module.exports={
             errorResponse(res,500,error.message)
         }
     },
-    // patchUpdate:async(req,res)=>{
-    //     try{
-    //         const recipe=await Recipe.findByIdAndUpdate(req.params.id,req.body);
-    //         successResponse(res,`Recipe ${req.params.recipe_title} is updated`, recipe);
-    //     }catch(error){
-    //         errorResponse(res,500,{
-    //             ...req.body,
-    //             _id:req.params.id,
-    //             error:error.message
-    //         })
-    //     }
-    // },
     delete:async(req,res)=>{
         try{
             await Recipe.findByIdAndRemove({_id:req.params.id});
@@ -60,9 +48,17 @@ module.exports={
                recipe.likes=recipe.likes.filter((id)=>id!==String(req.userId));
                 // successResponse(res,200,'The recipe has been disliked!');
             }
-
-
+            
             const updatedRecipe=await Recipe.findByIdAndUpdate(id,recipe,{new:true});
             res.status(200).json(updatedRecipe);
-    }
+    },
+    fetchByCategory: async(req,res)=>{
+        const {category}=req.params;
+        try{
+            const recipes=await Recipe.find({category:category})
+            res.send(recipes);
+        }catch(error){
+            errorResponse(res,500,error.message)
+        }
+    },
 };

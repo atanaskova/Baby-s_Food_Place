@@ -3,7 +3,7 @@ const events=require('events');
 const emitter=new events.EventEmitter();
 require('dotenv').config();
 
-module.exports=(user)=>{
+module.exports=(email)=>{
     var transporter = nodemailer.createTransport({
         host: "smtp.mailtrap.io",
         port: 2525,
@@ -16,9 +16,9 @@ module.exports=(user)=>{
     const reset=async()=>{
         await transporter.sendMail({
             from:'babysfoodplace@hotmail.com',
-            to:user.email,
+            to:email,
             subject:'Reset Password',
-            text:`Hello ${user.name}! Click on the link to reset your password: localhost:3003/api/v1/auth/reset-password`
+            html: {path:'./lib/handlers/mail-handler/reset-mail.html'}
         });
     }
 

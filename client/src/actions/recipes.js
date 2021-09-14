@@ -9,6 +9,16 @@ export const getRecipes=()=>async(dispatch)=>{
     }
 }
 
+export const getRecipesByCategory=(category)=>async(dispatch)=>{
+    try {
+        const {data}=await api.fetchRecipesByCategory(category);
+        console.log(data);
+        dispatch({type:'CATEGORY', payload:data})
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 export const createRecipe=(recipe)=>async(dispatch)=>{
     try {
         const {data}=await api.createRecipe(recipe);

@@ -5,8 +5,8 @@ const auth_middleware=require('../../../middleware/auth_middleware');
 
 router
     .get('/',controller.fetchAll)
+    .get('/:category',controller.fetchByCategory)
     .post('/',auth_middleware,controller.create)
-    // .patch('/:id',controller.patchUpdate)
     .delete('/:id',auth_middleware,controller.delete)
     .put('/like/:id',auth_middleware,controller.like)
     

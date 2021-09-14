@@ -13,13 +13,14 @@
 }
 
 .modal-bg{
-    height:350px;
+    height:max-content;
     box-shadow: 0 5px 20px rgb(255, 255, 255, 1);
     background-color: white;
     color:var(--midgrey);
     display:grid;
-    grid-template-columns: 250px 250px;
-    grid-template-rows: minmax(100px, auto);    
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: max-content max-content max-content;
+    grid-gap:10px;
     position: relative;
     z-index: 10;
     border-radius:3px;
@@ -29,11 +30,12 @@
     width:210px;
     height:130px;
     border-radius: 4px;
-    position:absolute;
     margin-top:50px;
     margin-left:20px;
     top:10px;
     left:0px;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .bi-x{
@@ -60,11 +62,15 @@
     font-family: 'Roboto Slab', serif;
     color:var(--orange);
     background: transparent;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .header{
     width: max-content;
     height: 35px;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 h6{
@@ -76,23 +82,25 @@ h6{
 
 .details{
     font-family: 'Roboto Slab', serif;
-    max-width: 210px !important;
+    max-width: 220px !important;
     overflow-wrap: break-word;
     color:var(--midgrey);
-    margin-top: 55px;
+    margin-top: 45px;
     font-size: 0.7rem;
     justify-content: flex-start;
+    grid-column: 2;
+    grid-row: 1/3;
 }
 
 .description{
     font-family: 'Roboto Slab', serif;
     max-width: 210px !important;
     overflow-wrap: break-word;
-    height: 100px;
     color:var(--midgrey);
     font-size: 0.6rem;
     margin-left: 20px;
-    margin-top: -20px;
+    grid-column: 1;
+    grid-row: 2;
 }
 
 .descr-header{
@@ -103,7 +111,6 @@ h6{
 
 .badge-pill.pill-b{
     height: 20px;
-    /* width: 40px; */
     background-color: var(--green);
     color: white;
     align-self: center;
@@ -113,12 +120,14 @@ h6{
 
 .footer{
     font-family: 'Roboto Slab', serif;
-    width: 300px;
-    height: 35px;
+    width: 210px;
+    height: 30px;
     color: var(--darkgrey);
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 10px;
+    grid-column: 1;
+    grid-row: 3;
 }
 
 i{

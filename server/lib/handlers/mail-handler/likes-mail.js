@@ -22,6 +22,7 @@ module.exports=(userId)=>{
         to:user.email,
         subject:"Wohoo you have a like!",
         text:`Hellooo ${user.name}, someone liked your recipe! You're famous, keep going!`,
+        html: {path:'./lib/handlers/mail-handler/likes-mail.html'}
     });
 }
 

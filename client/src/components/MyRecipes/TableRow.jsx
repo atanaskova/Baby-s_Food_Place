@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 import {deleteRecipe} from '../../actions/recipes';
 import { useTrail, animated as a } from "react-spring";
 import moment from 'moment';
@@ -12,6 +13,7 @@ const TableRow = () => {
   const recipes=useSelector((state)=>state.recipes);
   const user=JSON.parse(localStorage.getItem('profile'));
   const myrecipes=[];
+  const history=useHistory();
 
   function myRecipes(recipes){
     recipes.map((recipe)=>{
@@ -55,7 +57,7 @@ const TableRow = () => {
             {myrecipes[index].recipe_title}
           </td>
           <td className="py-3">
-            <Button className="font-weight-bold categorybtn">
+            <Button onClick={()=>history.push(`/${myrecipes[index].category}`)} className="font-weight-bold categorybtn">
               {myrecipes[index].category.toUpperCase()}
             </Button>
           </td>
@@ -69,7 +71,7 @@ const TableRow = () => {
           </td>
         </a.tr>
       ))
-      ):null
+      ):<div style={{height:100}}></div>
   );
 };
 export default TableRow;

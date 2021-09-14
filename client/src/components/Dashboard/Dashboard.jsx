@@ -11,11 +11,12 @@ const Dashboard=()=>{
     useEffect(()=>{
       dispatch(getRecipes());
     },[dispatch]);  
+    
     return(
-            <div className="container-fluid bg" style={{paddingLeft:55}}>
-                <FreshNewRecipes/>      
-                <MostPopularRecipes/>
-            </div>
+        <div className="container-fluid bg" style={{paddingLeft:55}}>
+          <FreshNewRecipes/>      
+          <MostPopularRecipes/>
+        </div>
     )
 }
 

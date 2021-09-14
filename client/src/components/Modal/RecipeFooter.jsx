@@ -1,29 +1,40 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 import '../../styles/Modal.css';
 import {likeRecipe} from '../../actions/recipes';
 
 const RecipeFooter=({recipe})=>{
     const dispatch=useDispatch();
+    const history=useHistory();
     const user=JSON.parse(localStorage.getItem('profile'));
 
     const Likes = () => {
-        if (recipe.likes.length > 0) {
+      if(typeof recipe.likes=== 'undefined'){
+        return <span className="likes-count"><i className="bi bi-star" />Like</span>;
+      }else
+        if (recipe.likes.length-1 > 0) {
+          if(user){
           return recipe.likes.find((like) => like === (user.result.googleId || user.result._id))
             ? (
-              <div><i className="bi bi-star-fill" />{recipe.likes.length} {recipe.likes.length === 1 ? 'Like' : 'Likes'}</div>
+              <span className="likes-count"><i className="bi bi-star-fill" />{recipe.likes.length-1} {recipe.likes.length-1 === 1 ? 'like' : 'likes'}</span>
             ) : (
-              <div><i className="bi bi-star" />{recipe.likes.length} {recipe.likes.length === 1 ? 'Like' : 'Likes'}</div>
+              <span className="likes-count"><i className="bi bi-star" />{recipe.likes.length-1} {recipe.likes.length-1 === 1 ? 'like' : 'likes'}</span>
             );
+          }else{
+            return <span className="likes-count"><i className="bi bi-star"/>{recipe.likes.length-1} {recipe.likes.length-1 === 1 ? 'like' : 'likes'}</span>
+            }
+        }else{
+        return <span className="likes-count"><i className="bi bi-star" />Like</span>;
         }
-        return <div><i className="bi bi-star" />Like</div>;
-    };
+      };
 
     return(
     <div className="footer">
         <i className="bi bi-clock">{recipe.preparation_time} minutes</i>
         <i className="bi bi-people">{recipe.no_people} people</i>
-        <span data-toggle="tooltip" title="I like this!" disabled={!user.result} onClick={()=>dispatch(likeRecipe(recipe._id))}><Likes /></span>
+        <span className="likes-count" data-toggle="tooltip" title="I like this!" onClick={
+        user ? (()=>dispatch(likeRecipe(recipe._id))) : (()=>history.push('/login'))}><Likes /></span>
     </div>
     )
 }

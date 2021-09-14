@@ -1,7 +1,5 @@
 import React from 'react';
-import FileBase from 'react-file-base64';
 import '../../styles/MyProfile.css';
-import img from '../../images/avatar.png';
 import Header from '../MainPage/Header';
 import Footer from '../MainPage/Footer';
 import MyProfileForm from './MyProfileForm';
@@ -20,19 +18,8 @@ const MyProfile=()=>{
                 </div>
 
                 <div className="my-profile-form">
-                    <div id="first-box-1">
-                    <span className="img-upload">
-                        <img id="user-img" alt="avatar" src={img}/><br/>
-                        <FileBase 
-                        type="file" 
-                        multiple={false}
-                        // onDone={({base64})=>setRecipeData({...recipeData, recipe_picture:base64})}
-                        />
-                    </span>
-                    </div>
-
                     <div className="my-profile-input-box">
-                        <MyProfileForm className="my-profile-input" />
+                        <MyProfileForm className="my-profile-input"/>
                     </div>
                 </div>
             </div>

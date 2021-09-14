@@ -2,6 +2,9 @@ export default (recipes=[],action)=>{
     switch (action.type) {
         case 'FETCH_ALL':
             return action.payload;
+        case 'CATEGORY':
+            console.log(action.payload);
+            return action.payload;
         case 'CREATE':
             return [...recipes, action.payload];
         case 'DELETE':

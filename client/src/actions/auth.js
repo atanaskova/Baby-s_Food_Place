@@ -19,3 +19,30 @@ export const register=(userData,history)=>async(dispatch)=>{
         console.log(error.message);
     }
 }
+
+export const updateUser=(id,user)=>async(dispatch)=>{
+    try {
+        const {data}=await api.updateUser(id,user);
+        dispatch({type:'UPDATE', data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const confirmEmail=(email)=>async(dispatch)=>{
+    try {
+        const {data}=await api.confirmEmail(email);
+        dispatch({type:'UPDATE', data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const resetPassword=(update)=>async(dispatch)=>{
+    try {
+        const {data}=await api.resetPassword(update);
+        dispatch({type:'UPDATE', data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}

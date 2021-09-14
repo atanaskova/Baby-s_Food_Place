@@ -1,0 +1,23 @@
+.email-modal{
+    background-color: var(--softwhite);
+    font-family: 'Roboto Slab', serif;
+}
+
+#contained-modal-title-vcenter{
+    color:var(--green);
+}
+
+h5{
+    color:var(--orange);
+}
+
+.email-submit{
+    background: var(--green);
+    box-shadow: 0px 3px 6px var(--darkgrey);
+    border: none;
+    font-weight: bolder;
+}
+
+.email-submit:hover{
+    background-color: var(--orange);
+}

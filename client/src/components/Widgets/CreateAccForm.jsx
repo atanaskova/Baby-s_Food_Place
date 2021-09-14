@@ -4,6 +4,10 @@ import {useHistory} from 'react-router-dom';
 import { Form, FormGroup, FormControl, FormLabel } from 'react-bootstrap';
 import {register} from '../../actions/auth';
 import '../../styles/CreateAccForm.css';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 const CreateAccForm = () => {
   const [userData, setUserData] = useState({name:'', surname:'', email:'', birthday:'', password:'', confirmation_password:'',imageUrl:''});
@@ -13,6 +17,7 @@ const CreateAccForm = () => {
   const handleSubmit=(e)=>{
     e.preventDefault();
     dispatch(register(userData,history));
+    toast.success('You have been successfully registered!',{position:toast.POSITION.TOP_CENTER});
   };
 
   const handleChange=(e)=>{
@@ -28,7 +33,7 @@ const CreateAccForm = () => {
           <FormGroup controlId="name">
             <FormLabel className='text-style'>First Name</FormLabel>
             <FormControl
-            className="bgd-style"
+            className="bgd-style-register"
             type="text"
             placeholder='John' 
             name="name" 
@@ -42,7 +47,7 @@ const CreateAccForm = () => {
             type='email' 
             placeholder='john@smith.com' 
             name='email' 
-            className="bgd-style"
+            className="bgd-style-register"
             label="Email"
             onChange={handleChange}/>
           </FormGroup>
@@ -53,7 +58,7 @@ const CreateAccForm = () => {
             type='password' 
             placeholder='******' 
             name='password' 
-            className="bgd-style"
+            className="bgd-style-register"
             label="Password"
             onChange={handleChange}/>
           </FormGroup>
@@ -70,7 +75,7 @@ const CreateAccForm = () => {
             type='text' 
             placeholder='Smith' 
             name='surname' 
-            className="bgd-style"
+            className="bgd-style-register"
             label="surname"
             onChange={handleChange}/>
           </FormGroup>
@@ -80,7 +85,7 @@ const CreateAccForm = () => {
             <FormControl 
             type='date' 
             name='birthday' 
-            className="bgd-style"
+            className="bgd-style-register"
             label="Birthday"
             onChange={handleChange}/>
           </FormGroup>
@@ -91,7 +96,7 @@ const CreateAccForm = () => {
             type='password' 
             placeholder='******' 
             name='confirmation_password' 
-            className="bgd-style"
+            className="bgd-style-register"
             label="confirmPassword"
             onChange={handleChange}/>
           </FormGroup>

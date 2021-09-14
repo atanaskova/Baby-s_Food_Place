@@ -6,7 +6,7 @@ body {
 
 .separator3{
   padding-top: 40px;
-  padding-left: 20px;
+  padding-left: 10px;
   display: flex;
   align-items: center;
 }
@@ -25,7 +25,7 @@ body {
   flex: 1;
   margin-top: 15px;
   margin-left: -60px;
-  margin-right: -20px;
+  margin-right: -40px;
   height: 1.5px;
   background-color: var(--lightgrey);
 }
@@ -34,7 +34,7 @@ body {
   display: flex;
   padding-top: 40px;
   padding-bottom: 70px;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .text-box{

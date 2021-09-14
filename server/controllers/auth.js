@@ -42,26 +42,15 @@ module.exports={
             errorResponse(res,500,error.message);
         }
     },
-    // confirmation:async (req, res) => {
-    //     try {
-    //       const { user: { id } } = jwt.verify(req.params.token, SECRET_AUTH_KEY);
-    //       await User.findByIdAndUpdate({where: { id }},req.user.confirmed=true);
-    //     } catch (error) {
-    //         errorResponse(res,500,error.message);
-    //     }
-      
-    //     return res.redirect('http://localhost:3001/api/user/login');
-    // },
     login:async(req,res)=>{
         try{
             const result=await User.findOne({email:req.body.email})
             if(!result){
                 return errorResponse(res,400,'Bad Request. User with the provided email does not exist.');
             }
-            // if (!result.confirmed) {
-            //     return errorResponse(res,400,'Please confirm your email to login');
-            // }
-            if(!bcrypt.compare(req.body.password,result.password)){
+
+            
+            if(!bcrypt.compareSync(req.body.password,result.password)){
                 return errorResponse(res,400,'Incorrect password.');
             }
 
@@ -82,58 +71,9 @@ module.exports={
             errorResponse(res,500,error.message);
         }
     },
-    // logout:async(req,res)=>{
-    //     try{
-    //         const payload={
-    //             id:req.user.id,
-    //             email:req.user.email
-    //         }
-
-    //         const token=jwt.sign(payload,'Invalid secret key',{
-    //             expiresIn:'1'
-    //         });
-            
-    //         successResponse(res,'You have been logged out',token);
-    //     }catch(error){
-    //         errorResponse(res,500,error.message);
-    //     }
-    // },
-    changePassword:async(req,res)=>{
-        try{
-            const user=await User.findOne({email:req.body.email});
-            if(!user){
-                return errorResponse(res,403,'Forbidden');
-            }
-            if(!bcrypt.compareSync(req.body.password,user.password)){
-                return errorResponse(res,401,'Unauthorized');
-            }
-            if(req.body.new_password===req.body.confirmation_password){
-                req.body.password==req.new_password;
-            }else{
-                return errorResponse(res,400,'Passwords do not match');
-            }
-
-            req.body.password=bcrypt.hashSync(req.body.password);
-
-            const updateUser=await User.findByIdAndUpdate(user._id,req.body);
-            if(updateUser){
-                return successResponse(res,'Password is successfully changed');
-            }
-            return errorResponse(res,404,'Not Found');
-        }catch(error){
-            errorResponse(res,500,'Internal Server Error');
-        }
-    },
     forgotPassword:async(req,res)=>{
         try{
-            const user=await User.findOne({email:req.body.email});
-            if(!user){
-                errorResponse(res,404,'Not Found');
-            }
-            const getLink=await User.findByIdAndUpdate(user._id,req.body);
-            if(getLink){
-                resetMailer(req.user);
-            }
+            resetMailer(req.body.email);
             successResponse(res,'Email has been sent, follow the instructions');
         }catch(error){
             errorResponse(res,500,'Internal Server Error');
@@ -141,24 +81,38 @@ module.exports={
     },
     resetPassword:async(req,res)=>{
         try{
-            const user=await User.findOne({email:req.body.email});
-            if(!user)
-            errorResponse(res,403,'Forbidden');
-            if(req.body.password===req.body.confirmation_password){
-                req.body.password==req.body.new_password;
-            }else{
-                errorResponse(res,400,'Passwords do not match');
+            const filter={email:req.body.email};
+            const new_password=bcrypt.hashSync(req.body.new_password,10);
+
+            const user=await User.findOne(filter)
+            if(!user){
+                return errorResponse(res,400,'Bad Request. User with the provided email does not exist.');
             }
 
-            req.body.password=bcrypt.hashSync(req.body.password);
+            const changedUser=await User.findOneAndUpdate(filter,{password:new_password});
 
-            const updateUser=await User.findByIdAndUpdate(user._id,req.body);
-            if(updateUser){
-                successResponse(res,'Password is successfully changed');
-            }else
-            return errorResponse(res,404,'Not Found');
+            res.json(changedUser);
+            // successResponse(res,'Password is successfully changed');
         }catch (error){
-            errorResponse(res,500,'Internal Server Error');
+            errorResponse(res,500,error.message);
+            // errorResponse(res,500,'Internal Server Error');
         }
     },
+    userUpdate:async(req,res)=>{
+        const {id}=req.params;
+         try{
+             req.body.password=bcrypt.hashSync(req.body.password,10);
+             
+             const result=await User.findByIdAndUpdate(id,req.body);
+ 
+             res.json({result});
+             // successResponse(res,`User is updated`, result);
+         }catch(error){
+             errorResponse(res,500,{
+                 ...req.body,
+                 _id:req.params.id,
+                 error:error.message
+             })
+         }
+     }, 
 };

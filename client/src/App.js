@@ -9,6 +9,8 @@ import Register from './components/Widgets/CreateAccount';
 import MyRecipes from './components/MyRecipes/MyRecipes';
 import NewRecipe from './components/MyRecipes/NewRecipe';
 import MyProfile from './components/MyProfile/MyProfile';
+import Category from './components/Category/Category';
+import ResetPassForm from './components/Reset/ResetPassForm';
 
 function App() {
   return (
@@ -33,9 +35,17 @@ function App() {
           <Route exact path='/myprofile'>
             <MyProfile />
           </Route>
+          
+          <Route exact path='/reset-password'>
+            <ResetPassForm />
+          </Route>
 
           <Route exact path='/'>
-            <Main/>
+            <Main />
+          </Route>
+
+          <Route exact path='/:category'>
+            <Category />
           </Route>
 
           <Route path='*'>

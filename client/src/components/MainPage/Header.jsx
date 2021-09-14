@@ -4,6 +4,11 @@ import {useHistory} from 'react-router-dom';
 import decode from 'jwt-decode';
 import '../../styles/Header.css';
 import { Nav, Container, Navbar, Button, Row } from 'react-bootstrap';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import default_img from '../../images/avatar.png';
+
+toast.configure()
 
 const Header = () => {
     const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')));
@@ -14,6 +19,7 @@ const Header = () => {
       dispatch({type:'LOGOUT' });
       history.push('/');
       setUser(null);
+      toast.success('You have been successfully logged out!',{position:toast.POSITION.TOP_CENTER});
     };
 
     useEffect(()=>{
@@ -23,7 +29,10 @@ const Header = () => {
       if(token){
         const decodedToken=decode(token);
 
-        if(decodedToken.exp *1000<new Date().getTime()) logout();
+        if(decodedToken.exp *1000<new Date().getTime()){
+          logout();
+          toast.warn('Your session has expired! Please log in again!',{position:toast.POSITION.TOP_CENTER});
+        }
       }
       setUser((JSON.parse(localStorage.getItem('profile'))));
     }},[]);
@@ -46,17 +55,17 @@ const Header = () => {
                   {user.result.imageUrl? (
                     <Row className="user">
                       <img className="avatar" alt="avatar" src={user.result.imageUrl}/>
-                      <div className="username">{user.result.name}</div>
+                      <div className="username">{user.result.name}  {user.result.surname ? user.result.surname : ' '}</div>
                     </Row>
                   ):(
                     user.result.surname? (
                     <Row className="user">
-                      <div className="avatar2">{user.result.name.charAt(0)}</div>
+                      <img className="avatar2" alt="avatar" src={default_img}/>
                       <div className="username">{user.result.name}  {user.result.surname}</div>
                     </Row>
                   ):(
                     <Row className="user">
-                      <div className="avatar2">{user.result.name.charAt(0)}</div>
+                      <img className="avatar2" alt="avatar" src={default_img}/>
                       <div className="username">{user.result.name}</div>
                     </Row>
                     )
