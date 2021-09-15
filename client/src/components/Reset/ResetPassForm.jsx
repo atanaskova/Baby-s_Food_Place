@@ -51,7 +51,7 @@ const ResetPassForm=()=>{
                     </FormGroup>
 
                     <FormGroup controlId="new_password">
-                        <FormLabel className='reset-style' id="text-style-2">Password</FormLabel>
+                        <FormLabel className='reset-style' id="text-style-2">New Password</FormLabel>
                         <FormControl 
                             type='password' 
                             placeholder='******' 

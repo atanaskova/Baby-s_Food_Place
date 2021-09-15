@@ -3,7 +3,7 @@ import EmailModal from '../Reset/EmailModal';
 import {useDispatch} from 'react-redux';
 import {GoogleLogin} from 'react-google-login';
 import {useHistory} from 'react-router-dom';
-import { Form, FormGroup, FormControl, FormLabel } from 'react-bootstrap'
+import { Form, FormGroup, FormControl, FormLabel,InputGroup } from 'react-bootstrap'
 import {login} from '../../actions/auth';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +13,7 @@ toast.configure()
 
 const LoginForm = () => {
   const [modalShow, setModalShow] = useState(false);
+  const [showPass,setShowPass]=useState(false);
   const [user, setUser] = useState({email: '', password: '',});
   const dispatch=useDispatch();
   const history=useHistory();
@@ -26,6 +27,10 @@ const LoginForm = () => {
   const handleChange=(e)=>{
     setUser({...user, [e.target.name] : e.target.value});
   };
+
+  const toggleShowPass=()=>{
+    setShowPass({showPass:!showPass});
+  }
 
   const googleSuccess=async(res)=>{
     const result=res.profileObj;
@@ -60,33 +65,34 @@ const LoginForm = () => {
           onChange={handleChange}/>
           </FormGroup>
 
-        <FormGroup controlId="password">
           <FormLabel className='text-style' id="text-style-2">Password</FormLabel>
-          <FormControl 
-          type='password' 
-          placeholder='******' 
-          name='password' 
-          className="placeholder-style"
-          label="Password"
-          onChange={handleChange}/>
-          </FormGroup>
-        <button type="submit" className="formLoginButton" onClick={handleSubmit}>LOG IN</button>
-        <GoogleLogin
-          clientId="538887536596-2johobc7j611db0n8rnpei2l1n26p62n.apps.googleusercontent.com"
-          render={(renderProps)=>(
-            <button 
-            className="btn btn-primary google"
-            onClick={renderProps.onClick}>
-              <i className="bi bi-google" style={{color:"white"}}/>
-              GOOGLE SIGN IN
-            </button>
-          )}
-          onSuccess={googleSuccess}
-          onFailure={googleFailure}
-          cookiePolicy="single_host_origin"
-          />
-        <div className="forgot-password" onClick={() => setModalShow(true)}>Forgot your password?</div>
-        <EmailModal show={modalShow} onHide={() => setModalShow(false)}/>
+          <InputGroup controlid="password">
+            <InputGroup.Text className="input-txt-2" onClick={toggleShowPass}>{showPass? <i className="bi bi-eye-fill password-icon-2"/> : <i className="bi bi-eye-slash-fill password-icon-2"/>}</InputGroup.Text>
+            <FormControl 
+            type={showPass?'text':'password'}
+            placeholder='******' 
+            name='password' 
+            className="placeholder-style"
+            label="Password"
+            onChange={handleChange}/>
+            </InputGroup>
+          <button type="submit" className="formLoginButton" onClick={handleSubmit}>LOG IN</button>
+          <GoogleLogin
+            clientId="538887536596-2johobc7j611db0n8rnpei2l1n26p62n.apps.googleusercontent.com"
+            render={(renderProps)=>(
+              <button 
+              className="btn btn-primary google"
+              onClick={renderProps.onClick}>
+                <i className="bi bi-google" style={{color:"white"}}/>
+                GOOGLE SIGN IN
+              </button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy="single_host_origin"
+            />
+          <div className="forgot-password" onClick={() => setModalShow(true)}>Forgot your password?</div>
+          <EmailModal show={modalShow} onHide={() => setModalShow(false)}/>
       </Form>
     </div>
   );

@@ -146,3 +146,22 @@ body {
 #text-style-2 {
   margin-top: 21px;
 }
+
+
+.password-icon-2{
+  font-size: medium;
+  padding-left: 5px;
+}
+
+.password-icon-2:hover{
+  color: var(--green);
+}
+
+.input-txt-2{
+  width: 40px !important;
+  height: 40px !important;
+  cursor:pointer;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(240, 239, 234, 1);
+}

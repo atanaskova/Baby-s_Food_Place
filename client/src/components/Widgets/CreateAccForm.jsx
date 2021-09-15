@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import { Form, FormGroup, FormControl, FormLabel } from 'react-bootstrap';
+import { Form, FormGroup, FormControl, FormLabel,InputGroup } from 'react-bootstrap';
 import {register} from '../../actions/auth';
 import '../../styles/CreateAccForm.css';
 import {toast} from 'react-toastify';
@@ -11,6 +11,7 @@ toast.configure()
 
 const CreateAccForm = () => {
   const [userData, setUserData] = useState({name:'', surname:'', email:'', birthday:'', password:'', confirmation_password:'',imageUrl:''});
+  const [showPass,setShowPass]=useState(false);
   const dispatch=useDispatch();
   const history=useHistory();
   
@@ -23,6 +24,10 @@ const CreateAccForm = () => {
   const handleChange=(e)=>{
     setUserData({...userData, [e.target.name] : e.target.value});
   };
+
+  const toggleShowPass=()=>{
+    setShowPass({showPass:!showPass});
+  }
 
   return (
     <div className="create-account">
@@ -38,6 +43,7 @@ const CreateAccForm = () => {
             placeholder='John' 
             name="name" 
             label="name"
+            required
             onChange={handleChange}/>
           </FormGroup>
 
@@ -49,19 +55,22 @@ const CreateAccForm = () => {
             name='email' 
             className="bgd-style-register"
             label="Email"
+            required
             onChange={handleChange}/>
           </FormGroup>
 
-          <FormGroup controlId="password">
-            <FormLabel className='text-style'>Password</FormLabel>
+          <FormLabel className='text-style'>Password</FormLabel>
+          <InputGroup controlId="password">
+            <InputGroup.Text className="input-txt" onClick={toggleShowPass}>{showPass? <i className="bi bi-eye-fill password-icon"/> : <i className="bi bi-eye-slash-fill password-icon"/>}</InputGroup.Text>
             <FormControl 
-            type='password' 
+            type={showPass?'text':'password'}
             placeholder='******' 
             name='password' 
             className="bgd-style-register"
             label="Password"
+            required
             onChange={handleChange}/>
-          </FormGroup>
+          </InputGroup>
 
           <button className='register' type='submit'>CREATE ACCOUNT</button>
 
@@ -77,6 +86,7 @@ const CreateAccForm = () => {
             name='surname' 
             className="bgd-style-register"
             label="surname"
+            required
             onChange={handleChange}/>
           </FormGroup>
 
@@ -87,6 +97,7 @@ const CreateAccForm = () => {
             name='birthday' 
             className="bgd-style-register"
             label="Birthday"
+            required
             onChange={handleChange}/>
           </FormGroup>
 
@@ -98,6 +109,7 @@ const CreateAccForm = () => {
             name='confirmation_password' 
             className="bgd-style-register"
             label="confirmPassword"
+            required
             onChange={handleChange}/>
           </FormGroup>
 
